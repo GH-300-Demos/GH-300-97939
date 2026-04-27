@@ -24,9 +24,6 @@ public class OrderItem
 
     public OrderItem(int id, string description, string code, int qty, decimal unitCost)
     {
-        if (qty <= 0) {
-            throw new ArgumentOutOfRangeException(nameof(qty), "Quantity must be greater than zero.");
-        }
         Id = id;
         Description = description;
         Code = code;
