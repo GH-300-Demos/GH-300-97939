@@ -33,8 +33,17 @@ public class OrderItem
         }
     }
 
+    private decimal _unitCost;
     /// <summary>Gets or sets the cost per single unit of the item.</summary>
-    public decimal UnitCost { get; set; }
+    public decimal UnitCost { 
+        get { return _unitCost; }
+        set {
+            if (value < 0) {
+                throw new ArgumentOutOfRangeException(nameof(value), "Unit cost cannot be negative.");
+            }
+            _unitCost = value;
+        }
+    }
 
     /// <summary>Gets the total cost for this line item, calculated as <see cref="Qty"/> multiplied by <see cref="UnitCost"/>.</summary>
     public decimal TotalCost
